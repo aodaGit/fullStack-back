@@ -56,7 +56,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [12.x, 14.x, latest] # 支持多个版本的node，避免高低版本问题
+        node-version: [14.x, latest] # 支持多个版本的node，避免高低版本问题
 
     steps:
       # 2.1 拉取代码

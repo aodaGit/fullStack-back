@@ -9,10 +9,10 @@ on:
     branches: ['main', 'master']
 
 env:
-  NODE_VERSION: '16.x'
   BUILD_DIST_NAME: 'back-end-app'
   BUILD_DIST_PATH: './build'
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 jobs:
@@ -110,6 +110,6 @@ jobs:
       - name: 'Deploy to vercel'
         run: npx vercel --token ${VERCEL_TOKEN} --prod
         env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_TOKEN: ${{ env.VERCEL_TOKEN }}
+          VERCEL_PROJECT_ID: ${{ env.VERCEL_PROJECT_ID }}
+          VERCEL_ORG_ID: ${{ env.VERCEL_ORG_ID }}

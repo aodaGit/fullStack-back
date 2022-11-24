@@ -1,5 +1,5 @@
 {
-  "name": "back-end-app",
+  "name": "full-stack-back",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon src/app.ts",
     "start": "node src/app.ts",

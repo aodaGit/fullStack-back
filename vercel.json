@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "back-end-app",
+  "name": "full-stack-back",
   "builds": [
     {
       "src": "./src/app.js",

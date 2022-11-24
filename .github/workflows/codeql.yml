@@ -1,0 +1,44 @@
+# code 安全扫描
+# 仅在推送JS,TS代码时扫描
+name: "CodeQL"
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "**js" #github第一坑，这个坑地方不能有.
+      - "**ts"
+      - "**tsx"
+      - "!./基础/**"
+      - "!./进阶/**"
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ["javascript", "TypeScript"] # 主要扫描的语言
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: ${{ matrix.language }}
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v2
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+        with:
+          category: "/language:${{matrix.language}}"

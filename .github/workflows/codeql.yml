@@ -8,9 +8,6 @@ on:
     paths:
       - "**js" #github第一坑，这个坑地方不能有.
       - "**ts"
-      - "**tsx"
-      - "!./基础/**"
-      - "!./进阶/**"
 
 jobs:
   analyze:
